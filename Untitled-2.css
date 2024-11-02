@@ -20,7 +20,7 @@ header nav {
 
 header ul {
     list-style: none;
-    list-style-image: url('new\assets\images\Home.svg');
+    list-style-image: url('assets\images\Home.svg');
     color: white;
 }
 
