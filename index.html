@@ -24,15 +24,44 @@
 
     <!-- Navbar -->
     <header>
-        <img src="assets\images\logo.svg" alt="logo">
-        <nav>
-            <div><img src="assets\images\Home.svg" alt="home"><span>Home</span></div>
-            <div><img src="assets\images\Home.svg" alt="home"><span>About Us</span></div>
-            <div><img src="assets\images\Home.svg" alt="home"><span>Services</span></div>
-        </nav>
         <div>
-            <button><img src="assets\images\lighttodark.svg" alt="mode"></button>
-            <button>Contact</button>
+            <img src="assets\images\logo.svg" alt="logo">
+            <nav>
+                <div>
+                    <img src="assets\images\Home.svg" alt="home">
+                    <span>Home</span>
+                </div>
+                <div>
+                    <img src="assets\images\Home.svg" alt="home">
+                    <span>About Us</span>
+                </div>
+                <div>
+                    <img src="assets\images\Home.svg" alt="home">
+                    <span>Services</span>
+                </div>
+            </nav>
+            <div>
+                <button><img alt="mode"></button>
+                <button>Contact</button>
+                <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <span>Home</span>
+                </li>
+                <li>
+                    <span>About Us</span>
+                </li>
+                <li>
+                    <span>Services</span>
+                </li>
+            </ul>
         </div>
     </header>
     <main>
@@ -40,10 +69,12 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-text">
-                <div class="highlight-box">
-                    <p class="subtitle">Innovative, cutting-edge solutions</p>
+                <div>
+                    <div class="highlight-box">
+                        <p class="subtitle">Innovative, cutting-edge solutions</p>
+                    </div>
+                    <h1>Hi, We're <span class="highlight"><br>Old Skool Labs</span><br>we deliver service.</h1>
                 </div>
-                <h1>Hi, We're <span class="highlight"><br>Old Skool Labs</span><br>we deliver service.</h1>
                 <p class="description">At Old Skool Labs, we leverage technology to empower businesses with tailored
                     solutions, seamlessly blending creativity and strategy. Where ideas are refined into reality,
                     digital
@@ -152,7 +183,8 @@
             <h2>Our <span class="highlight">Mission</span></h2>
             <div>
                 <div>
-                    <p><span class="highlight">Our Mission</span> is to harness the power of technology to solve complex challenges and unlock new
+                    <p><span class="highlight">Our Mission</span> is to harness the power of technology to solve complex
+                        challenges and unlock new
                         opportunities
                         for growth.</p>
                     <p>We strive to be a trusted partner for businesses seeking innovative solutions that drive tangible
@@ -174,34 +206,44 @@
             <div class="cards">
                 <div>
                     <div class="card excellence">
-                        <img src="assets/images/Excellence.png" alt="photo">
-                        <h2>Excellence</h2>
+                        <div>
+                            <img src="assets/images/Excellence.png" alt="photo">
+                            <h3>Excellence</h3>
+                        </div>
                         <p>We are dedicated to delivering excellence in everything we do, from the quality of our work
                             to the level of service we provide.</p>
                     </div>
                     <div class="card innovation">
-                        <img src="assets/images/Innovation.png" alt="photo">
-                        <h2>Innovation</h2>
+                        <div>
+                            <img src="assets/images/Innovation.png" alt="photo">
+                            <h3>Innovation</h3>
+                        </div>
                         <p>We embrace innovation and continuously seek new ways to push boundaries and drive progress.
                         </p>
                     </div>
                     <div class="card integrity">
-                        <img src="assets/images/Integrity.png" alt="photo">
-                        <h2>Integrity</h2>
+                        <div>
+                            <img src="assets/images/Integrity.png" alt="photo">
+                            <h3>Integrity</h3>
+                        </div>
                         <p>We uphold integrity, maintaining honesty and transparency in all our interactions and
                             decisions.</p>
                     </div>
                 </div>
                 <div>
                     <div class="card collaboration">
-                        <img src="assets/images/collaboration.png" alt="photo">
-                        <h2>Collaboration</h2>
+                        <div>
+                            <img src="assets/images/collaboration.png" alt="photo">
+                            <h3>Collaboration</h3>
+                        </div>
                         <p>We believe in the power of collaboration and work closely with our clients to understand
                             their unique needs and deliver tailored solutions.</p>
                     </div>
                     <div class="card customer-focus">
-                        <img src="assets/images/Customer Focus.png" alt="photo">
-                        <h2>Customer Focus</h2>
+                        <div>
+                            <img src="assets/images/Customer Focus.png" alt="photo">
+                            <h3>Customer Focus</h3>
+                        </div>
                         <p>We are committed to putting our customers first, providing personalized attention and support
                             to ensure their success.</p>
                     </div>
@@ -304,8 +346,10 @@
     <footer>
         <div class="subfooter">
             <div>
-                <img src="assets/images/logo.svg" alt="logo">
-                <span style="color:white; font-size: 1.5rem; font-weight: bold;">Old Skool Labs</span>
+                <div>
+                    <img src="assets/images/logo.svg" alt="logo">
+                    <span>Old Skool Labs</span>
+                </div>
                 <span>Destinize adalah website atau layanan aplikasi yang membantu kamu memilih atau merekomendasikan
                     tempat yang dijuluki 'hidden gems' agar lebih dikenal dan ramai <span class="highlight">Baca
                         Selengkapnya</span></span>
@@ -370,6 +414,36 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        let mql = window.matchMedia("(max-width: 1320px)");
+        if (mql.matches) {
+            const b = document.querySelector('.outro>div:first-child');
+            document.querySelector('.outro img').setAttribute('height', b.clientHeight);
+        }
+
+        let mqm = window.matchMedia("(max-width: 862px)");
+        if (mqm.matches) {
+            document.querySelector('.cards>div:last-child').insertBefore(document.querySelector('.integrity'), document.querySelector('.collaboration'));
+            const a = document.querySelector('.customer-focus');
+            a.style.padding = "13px 19px";
+            a.style.width = "auto";
+            document.querySelector('.cards').appendChild(a);
+        }
+
+        const hamMenu = document.querySelector(".ham-menu");
+        const offScreenMenu = document.querySelector("header>div:last-child");
+        hamMenu.addEventListener("click", () => {
+            hamMenu.classList.toggle("active");
+            offScreenMenu.classList.toggle("active");
+        });
+
+        const darkLight=document.querySelector('header>div:first-child>div:last-child button:first-child');
+        darkLight.addEventListener('click',()=>{
+            console.log(darkLight);
+            darkLight.querySelector('img').classList.toggle('active');
+        });
+    </script>
 
 </body>
 
