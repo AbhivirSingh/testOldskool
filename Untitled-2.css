@@ -2,7 +2,28 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary-color: black;
+    --secondary-color: white;
+    --third-color: white;
+    --fourth-color: rgba(0,0,0,0.5);
+    --testimonial1: #DADADA;
+    --testimonial2: #0D0D0D;
+    --testimonial3: #FFDBBA;
+}
+
+.dark-theme{    
+    --primary-color: white;
+    --secondary-color: black;
+    --third-color: #4B4B4B;
+    --fourth-color: rgba(255,255,255,0.5);
+    --testimonial1: #313131;
+    --testimonial2: #313131;
+    --testimonial3: #313131;
+}
+
 body {
+    background-color: var(--secondary-color);
     margin: 0;
 }
 
@@ -20,7 +41,7 @@ header nav {
 
 header ul {
     list-style: none;
-    list-style-image: url('assets\images\Home.svg');
+    list-style-image: url('new\assets\images\Home.svg');
     color: white;
 }
 
@@ -49,6 +70,7 @@ header>div:last-child.active {
 }
 
 .ham-menu {
+    cursor: pointer;
     height: 50px;
     width: 40px;
     margin-left: auto;
@@ -119,16 +141,12 @@ header>div:first-child>div:last-child button:nth-child(2) {
     font-size: 18px;
 }
 
-header>div:first-child>div:last-child button:first-child img {
-    src: url("assets\images\lighttodark.svg");
+header>div:first-child>div:last-child button:first-child img{
+    width: 30px;
 }
-
-header>div:first-child>div:last-child button:first-child img.active {
-    src: url('assets\images\dark.svg');
-}
-
 /* Hero Section */
 .hero {
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     padding: 80px 80px 0;
@@ -154,6 +172,7 @@ header>div:first-child>div:last-child button:first-child img.active {
 }
 
 .hero button {
+    cursor: pointer;
     margin-top: 40px;
     background-color: #f75809;
     font-size: 23px;
@@ -177,7 +196,7 @@ header>div:first-child>div:last-child button:first-child img.active {
 
 .hero .description {
     font-size: 1rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--fourth-color);
     font-weight: 500;
     max-width: 560px;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -187,16 +206,16 @@ header>div:first-child>div:last-child button:first-child img.active {
     width: 600px;
     height: 450px;
     border-radius: 10px;
-    background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), white);
+    background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), var(--secondary-color));
 }
 
 /* Stats Section */
 .stats {
+    color: var(--primary-color);
     display: flex;
     justify-content: center;
     gap: 40px;
     padding: 45px 0 0;
-    background-color: #fff;
     font-family: 'Instrument Sans', sans-serif;
     font-size: 20px;
 }
@@ -216,17 +235,19 @@ header>div:first-child>div:last-child button:first-child img.active {
 
 .stat-item p {
     max-width: 55px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .stat-item:nth-child(2) {
     width: 300px;
     border-radius: 10px;
+    background-color: var(--third-color);
     box-shadow: rgba(0, 0, 0, 0.02) 0 100px 80px 0, rgba(0, 0, 0, 0) 0 64.81px 46.85px 0, rgba(0, 0, 0, 0.06) 0 38.52px 25.48px 0, rgba(0, 0, 0, 0.01) 0 20px 13px 0, rgba(0, 0, 0, 0.008) 0 8.15px 6.52px 0, rgba(0, 0, 0, 0.005) 0 1.85px 3.15px 0;
 }
 
 /* About Section */
 .about {
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -250,13 +271,13 @@ header>div:first-child>div:last-child button:first-child img.active {
 .about-image img {
     width: 400px;
     height: 250px;
-    background-image: radial-gradient(rgba(255, 122, 0, 0.6) 0%, white 72%, white 100%);
+    background-image: radial-gradient(rgba(255, 122, 0, 0.6) 0%, var(--secondary-color) 72%, var(--secondary-color) 100%);
 }
 
 /* Services Section */
 .services {
+    color: var(--primary-color);
     padding: 60px;
-    background: #fff;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -274,7 +295,6 @@ header>div:first-child>div:last-child button:first-child img.active {
 }
 
 .service-card {
-    background: #fff;
     padding: 20px;
     border-radius: 5px;
     width: 360px;
@@ -298,10 +318,12 @@ hr {
     width: 53%;
     height: 2px;
     margin: 0 23.5%;
+    background-color: var(--primary-color);
 }
 
 /* Mission Section */
 .mission {
+    color: var(--primary-color);
     padding: 60px;
     font-family: 'Outfit', sans-serif;
 }
@@ -316,6 +338,7 @@ hr {
     display: flex;
     padding: 95px;
     align-items: center;
+    justify-content: space-between;
 }
 
 .mission div div:first-child {
@@ -324,10 +347,11 @@ hr {
 }
 
 .mission div div:last-child {
-    background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), white);
+    background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), var(--secondary-color));
 }
 
 .values {
+    color: var(--primary-color);
     font-family: 'Outfit', sans-serif;
 }
 
@@ -396,6 +420,7 @@ hr {
 
 
 .clients {
+    color: var(--primary-color);
     padding: 80px;
     font-family: 'Outfit', sans-serif;
 }
@@ -412,6 +437,7 @@ hr {
 }
 
 .clients button {
+    cursor: pointer;
     outline: none;
     border: none;
     border-radius: 50px;
@@ -446,7 +472,7 @@ hr {
     width: 400px;
     padding: 64px 40px;
     border-radius: 30px;
-    background-color: #0D0D0D;
+    background-color: var(--testimonial2);
     display: flex;
     flex-direction: column;
     color: white;
@@ -458,13 +484,13 @@ hr {
 }
 
 .testimonials>div:first-child {
-    background-color: #DADADA;
-    color: black;
+    background-color: var(--testimonial1);
+    color: var(--primary-color);
 }
 
 .testimonials>div:last-child {
-    background-color: #FFDBBA;
-    color: black;
+    background-color: var(--testimonial3);
+    color: var(--primary-color);
 }
 
 .testimonials div div:first-child {
@@ -524,6 +550,7 @@ hr {
 }
 
 .outro button {
+    cursor: pointer;
     outline: none;
     border: none;
     padding: 1.5rem 2.5rem;
@@ -660,6 +687,7 @@ footer .ending div {
     }
 
     .outro button {
+        cursor: pointer;
         padding: 1.25vw 2.1vw;
         font-size: 1vw;
     }
@@ -963,7 +991,7 @@ footer .ending div {
         width: 300px;
         height: 243.46px;
         border-radius: 10px;
-        background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), white);
+        background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), var(--secondary-color));
     }
 
     .stats {
@@ -1089,7 +1117,7 @@ footer .ending div {
     }
 
     .mission div div:last-child {
-        background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), white);
+        background-image: radial-gradient(circle closest-side, rgba(255, 122, 0, 0.6), var(--secondary-color));
     }
 
     .values h2 {
