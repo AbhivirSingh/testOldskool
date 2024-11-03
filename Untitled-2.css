@@ -2,21 +2,21 @@
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary-color: black;
     --secondary-color: white;
     --third-color: white;
-    --fourth-color: rgba(0,0,0,0.5);
+    --fourth-color: rgba(0, 0, 0, 0.5);
     --testimonial1: #DADADA;
     --testimonial2: #0D0D0D;
     --testimonial3: #FFDBBA;
 }
 
-.dark-theme{    
+.dark-theme {
     --primary-color: white;
     --secondary-color: black;
     --third-color: #4B4B4B;
-    --fourth-color: rgba(255,255,255,0.5);
+    --fourth-color: rgba(255, 255, 255, 0.5);
     --testimonial1: #313131;
     --testimonial2: #313131;
     --testimonial3: #313131;
@@ -140,9 +140,10 @@ header>div:first-child>div:last-child button:nth-child(2) {
     font-size: 18px;
 }
 
-header>div:first-child>div:last-child button:first-child img{
+header>div:first-child>div:last-child button:first-child img {
     width: 30px;
 }
+
 /* Hero Section */
 .hero {
     color: var(--primary-color);
@@ -891,6 +892,30 @@ footer .ending div {
 }
 
 @media (max-width: 862px) {
+
+    header>div:first-child>div:last-child {
+        gap: 10px;
+    }
+
+    header>div:first-child>div:last-child button:first-child img {
+        width: 20px;
+    }
+
+    header>div:first-child>div:last-child button:nth-child(2) {
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .ham-menu {
+        height: 30px;
+        width: 20px;
+    }
+
+    .ham-menu span {
+        height: 2px;
+        border-radius: 10px;
+    }
 
     .hero-image img {
         width: 400px;
