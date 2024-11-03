@@ -524,6 +524,7 @@ hr {
     display: flex;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    justify-content: space-between;
 }
 
 .outro>div:first-child {
