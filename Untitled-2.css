@@ -292,6 +292,7 @@ header>div:first-child>div:last-child button:first-child img {
     grid-template-columns: repeat(3, 1fr);
     gap: 86px 52px;
     margin: 65px 60px;
+    justify-items: center;
 }
 
 .service-card {
@@ -307,6 +308,11 @@ header>div:first-child>div:last-child button:first-child img {
     width: 148px;
     height: 181px;
     margin-bottom: 10px;
+}
+
+.service-card a{
+    color: black;
+    text-decoration: none;
 }
 
 .services p {
