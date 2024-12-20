@@ -74,7 +74,6 @@ const sendmail = async (transporter, mailoptions, res) => {
 app.post("/mail", (req, res) => {
     const { fname, lname, mail, subject, msg } = req.body;
     const name= fname+' '+lname;
-    console.log(req.body);
 
     const mailoptions = {
         from: {
