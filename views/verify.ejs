@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="assets/images/osl_logo.svg">
+    <title>Old Skool Labs</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: black;
+            --secondary-color: white;
+            --third-color: white;
+            --fourth-color: rgba(0, 0, 0, 0.5);
+            --outro: black;
+        }
+
+        .dark-theme {
+            --primary-color: white;
+            --secondary-color: black;
+            --third-color: #232121;
+            --fourth-color: rgba(255, 255, 255, 0.5);
+            --outro: #555555;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, rgba(255, 106, 23, 0.3), rgba(82, 75, 227, 0.4), rgba(82, 75, 227, 0.6), white);
+            display: flex;
+            flex-direction: column;
+            padding: 14px 56px;
+        }
+
+        header nav {
+            display: flex;
+            gap: 67.5px;
+        }
+
+        header ul {
+            list-style: none;
+            color: white;
+        }
+
+        header ul a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header nav div {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 18px;
+        }
+
+        header nav a {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+        }
+
+        header>div:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header>div:last-child,
+        .ham-menu {
+            display: none;
+        }
+
+        header>div:last-child.active {
+            display: block;
+            transition: .3s all;
+        }
+
+        .ham-menu {
+            cursor: pointer;
+            height: 50px;
+            width: 40px;
+            margin-left: auto;
+            position: relative;
+        }
+
+        .ham-menu span {
+            height: 5px;
+            width: 100%;
+            border-radius: 25px;
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: .3s ease;
+        }
+
+        .ham-menu span:nth-child(1) {
+            background-color: rgba(255, 105, 21, 1);
+            top: 25%;
+        }
+
+        .ham-menu span:nth-child(3) {
+            background-color: rgba(255, 105, 21, 1);
+            top: 75%;
+        }
+
+        .ham-menu.active span {
+            background-color: black;
+        }
+
+        .ham-menu.active span:nth-child(1) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .ham-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ham-menu.active span:nth-child(3) {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        header>div:first-child>div:last-child {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+        }
+
+        header>div:first-child>div:last-child button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        header>div:first-child>div:last-child a button {
+            border-radius: 8px;
+            padding: 10px 25px;
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 105, 21, 1);
+            font-size: 18px;
+        }
+
+        header>div:first-child>div:last-child button:first-child img {
+            width: 30px;
+        }
+
+        @media (max-width: 1036px) {
+
+            header nav {
+                display: none;
+            }
+
+            .ham-menu {
+                display: block;
+            }
+
+            header>div:last-child ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 862px) {
+
+            header>div:first-child>div:last-child {
+                gap: 10px;
+            }
+
+            header>div:first-child>div:last-child button:first-child img {
+                width: 20px;
+            }
+
+            header>div:first-child>div:last-child a button {
+                border-radius: 8px;
+                padding: 5px 12px;
+                font-size: 12px;
+            }
+
+            .ham-menu {
+                height: 30px;
+                width: 20px;
+            }
+
+            .ham-menu span {
+                height: 2px;
+                border-radius: 10px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+            header {
+                padding: 23px 22px 24px 0;
+            }
+
+            header nav {
+                display: none;
+            }
+
+            header>div:last-child {
+                display: none;
+            }
+        }
+
+        :root {
+            --primary: #ff7700;
+            --primary-light: #ffa366;
+            --primary-dark: #cc5f00;
+            --white: #ffffff;
+            --light-bg: #f7f7f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9d5c, #ffffff);
+            position: relative;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced background elements */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffc299, #ffffff);
+            top: -400px;
+            left: -200px;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffffff, #ffab70);
+            bottom: -300px;
+            right: -200px;
+            z-index: -2;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .background-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            opacity: 0.4;
+            filter: blur(20px);
+        }
+
+        .shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            left: -100px;
+        }
+
+        .shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            right: -100px;
+            background: linear-gradient(135deg, #ffffff, var(--primary-light));
+        }
+
+        .shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ffceb6, #ffffff);
+        }
+
+        .employee-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow:
+                0 10px 30px rgba(255, 119, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            display: flex;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20vh;
+        }
+
+        /* Enhanced glass effect with gradient overlay */
+        .employee-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 210, 180, 0.3), rgba(255, 255, 255, 0.1));
+            z-index: -1;
+            border-radius: 16px;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 15px 35px rgba(255, 119, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.7);
+        }
+
+        .photo-section {
+            flex: 0 0 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.7);
+            box-shadow:
+                0 5px 15px rgba(255, 119, 0, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.5);
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        /* Enhanced photo container glow */
+        .photo-container::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.4) 0%, rgba(255, 165, 0, 0) 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details-section {
+            flex: 1;
+            padding: 10px 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header {
+            color: #ff6600;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 24px;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .form-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255, 119, 0, 0.6), rgba(255, 255, 255, 0.3));
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1 0 200px;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ff7700;
+            font-size: 14px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            font-size: 15px;
+            color: #333;
+            box-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.05),
+                inset 0 1px 3px rgba(255, 255, 255, 0.5);
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control:hover {
+            border-color: rgba(255, 119, 0, 0.5);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: var(--primary);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        .input-icon .form-control {
+            padding-left: 45px;
+        }
+
+        .form-value {
+            padding-left: 45px;
+            color: #666;
+        }
+
+        .form-placeholder {
+            color: #999;
+        }
+
+
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+
+            .input-icon .form-control {
+                padding-left: 10px;
+            }
+
+            .employee-card {
+                flex-direction: column;
+                margin-top: 0;
+            }
+
+            .photo-section {
+                flex: 0 0 auto;
+                margin-bottom: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-group {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+    <header>
+        <div>
+            <img src="\assets\images\logo.svg" alt="logo">
+            <nav>
+                <div>
+                    <img src="\assets\images\Home.svg" alt="home">
+                    <span>Home</span>
+                </div>
+                <div>
+                    <img src="\assets\images\Home.svg" alt="home">
+                    <span>About Us</span>
+                </div>
+                <div>
+                    <img src="\assets\images\Home.svg" alt="home">
+                    <span>Services</span>
+                </div>
+            </nav>
+            <div>
+                <a href="/contact">
+                    <button>Contact</button>
+                </a>
+                <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a href="/">
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <span>About Us</span>
+                </li>
+                <li>
+                    <span>Services</span>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="background-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+
+            <div class="employee-card">
+                <div class="photo-section">
+                    <div class="photo-container">
+                        <img src=<%=f[5] %> alt="Employee Photo">
+                    </div>
+                </div>
+                <div class="details-section">
+                    <h2 class="form-header">Employee Information</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                                <div id="name" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[1] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <div class="input-icon">
+                                <i class="fas fa-briefcase"></i>
+                                <div id="designation" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[2] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="joining-date">Joining Date</label>
+                            <div class="input-icon">
+                                <i class="fas fa-calendar-plus"></i>
+                                <div id="joining-date" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[3] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ending-date">Ending Date</label>
+                            <div class="input-icon">
+                                <i class="fas fa-calendar-minus"></i>
+                                <div id="ending-date" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[4] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-icon">
+                                <i class="fas fa-phone-alt"></i>
+                                <div id="phone" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[6] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <div id="email" class="form-control">
+                                    <span class="form-placeholder">
+                                        <%= f[7] %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <script>
+
+        const hamMenu = document.querySelector(".ham-menu");
+        const offScreenMenu = document.querySelector("header>div:last-child");
+        hamMenu.addEventListener("click", () => {
+            hamMenu.classList.toggle("active");
+            offScreenMenu.classList.toggle("active");
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

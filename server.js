@@ -1,11 +1,12 @@
+require('dotenv').config()
 const express = require("express");
 const nodemailer = require('nodemailer');
 const path = require("path");
+const { google } = require("googleapis");
 const app = express();
 
 const port = 5000;
 
-let name, email, message;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -45,6 +46,56 @@ app.get("/TestingSolutions", (req, res) => {
     res.render("TestingSolutions");
 });
 
+app.get("/verification/:id", async (req, res) => {
+    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+
+
+    const auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: "https://www.googleapis.com/auth/spreadsheets",
+    });
+
+    // Create client instance for auth
+    const client = await auth.getClient();
+
+    // Instance of Google Sheets API
+    const googleSheets = google.sheets({ version: "v4", auth: client });
+
+    const spreadsheetId = "1ZyXDAaWBCMMuM355vDf9_3UdL-Hec8Hfi2vtZN3rZ88";
+
+
+    // Read rows from spreadsheet
+    const getRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "Sheet1",
+    });
+
+    let found = false;
+
+    getRows.data.values.forEach((f) => {
+        if (f[0] == req.params.id) {
+            found = true;
+            if (f[5] == '') {
+                f[5] = "https://imgs.search.brave.com/5muD4CkkYuOZPC-IHVawU9nrO4nWh0ESskiHYsIBAcc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvcHJldmll/dy0xeC82Mi81OS9k/ZWZhdWx0LWF2YXRh/ci1waG90by1wbGFj/ZWhvbGRlci1wcm9m/aWxlLWljb24tdmVj/dG9yLTIxNjY2MjU5/LmpwZw";
+            }
+            res.render("verify", { f });
+        }
+
+    });
+    if (!found) { res.send("id not found"); }
+
+    // catch (error) {
+    //     console.error("Error:", error);
+    //     res.status(500).send("Internal Server Error");
+    // }
+
+
+});
+
+
+
+
 app.get("/main", (req, res) => {
     res.render("index");
 });
@@ -73,7 +124,7 @@ const sendmail = async (transporter, mailoptions, res) => {
 
 app.post("/mail", (req, res) => {
     const { fname, lname, mail, subject, msg } = req.body;
-    const name= fname+' '+lname;
+    const name = fname + ' ' + lname;
 
     const mailoptions = {
         from: {
